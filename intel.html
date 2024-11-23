@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bluetech Website</title>
+    <style>
+        /* Reset margin and padding for all elements */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        /* Background image settings */
+        .background-image {
+            height: 100%;
+            background-image: url('BACKGROUND@$.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        /* Basic Styles */
+        body {
+            font-family: Arial, sans-serif;
+            position: relative;
+            background-color: #f4f4f4;
+        }
+
+        /* Header with Menu */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Logo */
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Menu */
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            margin: 0 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            background-color: #444;
+        }
+
+        /* Content Section */
+        .content-box {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            margin-top: 10px;
+            position: absolute;
+            top: 100px; /* Position directly below the header */
+            left: 0;
+            right: 0;
+            z-index: 2;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+            /* Remove full screen size to fit the content */
+            max-height: 70vh; /* Limit height */
+            overflow-y: auto; /* Scroll if content exceeds height */
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 40px;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            body {
+                font-size: 16px;
+            }
+
+            /* Header */
+            header {
+                padding: 15px 30px;
+            }
+
+            .logo {
+                font-size: 26px;
+            }
+
+            nav a {
+                font-size: 16px;
+            }
+        }
+
+        /* Tablet Devices */
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                margin-top: 10px;
+            }
+
+            nav a {
+                font-size: 16px;
+                padding: 10px;
+                margin: 5px 0;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .content-box {
+                width: 90%;
+                margin-left: 5%;
+                margin-right: 5%;
+            }
+        }
+
+        /* Mobile Devices */
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            header {
+                padding: 10px 20px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            nav {
+                flex-direction: column;
+                width: 100%;
+                text-align: left;
+            }
+
+            nav a {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .content-box {
+                width: 100%;
+                margin: 10px;
+            }
+
+            footer {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<header>
+    <div class="logo" onclick="window.location.href='index.html'">Bluetech</div>
+    <nav>
+        <a href="javascript:void(0)" onclick="toggleContent('about')">About Us</a>
+        <a href="javascript:void(0)" onclick="toggleContent('service')">Service</a>
+        <a href="javascript:void(0)" onclick="toggleContent('product')">Product</a>
+        <a href="javascript:void(0)" onclick="toggleContent('contact')">Contact Info</a>
+    </nav>
+</header>
+
+<!-- Background Image -->
+<div class="background-image"></div>
+
+<!-- Content Sections -->
+<div id="about" class="content-box">
+    <h2>About Us</h2>
+    <p>We are Bluetech, one of the leading computer technology companies in the Philippines since 2020. We started as a small computer shop in 2012, and with the advancement of technology, we decided to develop and improve our business, which is why Bluetech was born.</p>
+</div>
+
+<div id="service" class="content-box">
+    <h2>Service</h2>
+    <p>We offer a wide range of services including computer parts selling, computer repair, building computers, and software development.</p>
+</div>
+
+<div id="product" class="content-box">
+    <h2>Product</h2>
+    <p>Our products range from hardware devices, components, software systems, and more. To explore more of our products, go to our shopping cart now.</p>
+</div>
+
+<div id="contact" class="content-box">
+    <h2>Contact Info</h2>
+    <p>Get in touch with us via email at contact@bluetech.com or call +63-921-700-0741.</p>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Bluetech. All Rights Reserved.</p>
+</footer>
+
+<script>
+    // Function to toggle content visibility (open and close)
+    function toggleContent(section) {
+        const sectionElement = document.getElementById(section);
+        // If the section is currently visible, hide it; otherwise, show it
+        if (sectionElement.style.display === 'block') {
+            sectionElement.style.display = 'none';
+        } else {
+            // Hide all sections first
+            const sections = ['about', 'service', 'product', 'contact'];
+            sections.forEach(function(sec) {
+                document.getElementById(sec).style.display = 'none';
+            });
+            // Show the selected section
+            sectionElement.style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>
