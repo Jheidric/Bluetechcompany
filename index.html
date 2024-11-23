@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bluetech Website</title>
+    <title>Bluetech Website with Robot Animation and Social Icons</title>
     <style>
-        /* Reset margin and padding for all elements */
+        /* Basic Reset */
         * {
             margin: 0;
             padding: 0;
@@ -15,10 +15,21 @@
 
         html, body {
             height: 100%;
-            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            overflow: hidden;
+            position: relative;
         }
 
-        /* Background image settings */
+        /* Background and Full Page Setup */
+        body {
+            position: relative;
+            font-size: 16px;
+        }
+
         .background-image {
             height: 100%;
             background-image: url('BACKGROUND@$.png');
@@ -28,17 +39,12 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
+            right: 0;
+            bottom: 0;
+            z-index: -1; /* Put the background behind the content */
         }
 
-        /* Basic Styles */
-        body {
-            font-family: Arial, sans-serif;
-            position: relative;
-            background-color: #f4f4f4;
-        }
-
-        /* Header with Menu */
+        /* Header and Footer Styles */
         header {
             background-color: #333;
             color: white;
@@ -46,11 +52,25 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
-            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
         }
 
-        /* Logo */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 40px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+        }
+
         .logo {
             font-size: 30px;
             font-weight: bold;
@@ -58,7 +78,6 @@
             cursor: pointer;
         }
 
-        /* Menu */
         nav {
             display: flex;
             align-items: center;
@@ -77,14 +96,153 @@
             background-color: #444;
         }
 
-        /* Content Section */
+        /* Robot Animation Container */
+        .robot-container {
+            position: absolute;
+            bottom: 120px; /* Ensure the robot stays above the footer */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10; /* Ensure it's in front of the background */
+        }
+
+        /* Robot Shape */
+        .robot {
+            width: 150px;
+            height: 250px;
+            background-color: #4CAF50;
+            border-radius: 10px;
+            position: relative;
+            animation: moveRobot 12s infinite linear;
+        }
+
+        /* Robot Head */
+        .robot .head {
+            width: 100px;
+            height: 100px;
+            background-color: #333;
+            border-radius: 50%;
+            position: absolute;
+            top: -50px;
+            left: 25px;
+        }
+
+        /* Robot Eyes */
+        .robot .eye {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 30px;
+        }
+
+        .robot .eye.left {
+            left: 25px;
+        }
+
+        .robot .eye.right {
+            right: 25px;
+        }
+
+        /* Robot Body */
+        .robot .body {
+            width: 120px;
+            height: 140px;
+            background-color: #666;
+            position: absolute;
+            top: 50px;
+            left: 15px;
+            border-radius: 10px;
+        }
+
+        /* Robot Arms */
+        .robot .arm {
+            width: 30px;
+            height: 70px;
+            background-color: #333;
+            position: absolute;
+            top: 60px;
+        }
+
+        .robot .arm.left {
+            left: -40px;
+        }
+
+        .robot .arm.right {
+            right: -40px;
+        }
+
+        /* Robot Legs */
+        .robot .leg {
+            width: 40px;
+            height: 60px;
+            background-color: #333;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .robot .leg.left {
+            left: 15px;
+        }
+
+        .robot .leg.right {
+            right: 15px;
+        }
+
+        /* Social Media Sign */
+        .social-sign {
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            position: absolute;
+            bottom: -70px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-sign img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Hover Effect for Social Icon */
+        .social-sign:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Robot Walking Animation */
+        @keyframes moveRobot {
+            0% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(100px);
+            }
+            50% {
+                transform: translateX(200px);
+            }
+            75% {
+                transform: translateX(300px);
+            }
+            100% {
+                transform: translateX(400px);
+            }
+        }
+
+        /* Content Box Styling */
         .content-box {
             display: none;
             background-color: white;
             padding: 20px;
             margin-top: 10px;
             position: absolute;
-            top: 100px; /* Position directly below the header */
+            top: 100px;
             left: 0;
             right: 0;
             z-index: 2;
@@ -92,51 +250,16 @@
             max-width: 90%;
             margin-left: 5%;
             margin-right: 5%;
-            /* Remove full screen size to fit the content */
-            max-height: 70vh; /* Limit height */
-            overflow-y: auto; /* Scroll if content exceeds height */
-        }
-
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px 40px;
-            margin-top: 20px;
-            font-size: 18px;
+            max-height: 70vh;
+            overflow-y: auto;
         }
 
         /* Responsive Design */
-        @media (max-width: 1024px) {
-            body {
-                font-size: 16px;
-            }
-
-            /* Header */
-            header {
-                padding: 15px 30px;
-            }
-
-            .logo {
-                font-size: 26px;
-            }
-
-            nav a {
-                font-size: 16px;
-            }
-        }
-
-        /* Tablet Devices */
         @media (max-width: 768px) {
-            body {
-                font-size: 15px;
-            }
-
             header {
                 flex-direction: column;
                 align-items: flex-start;
-                padding: 10px 20px;
+                padding: 10px;
             }
 
             nav {
@@ -144,58 +267,10 @@
                 margin-top: 10px;
             }
 
-            nav a {
-                font-size: 16px;
-                padding: 10px;
-                margin: 5px 0;
-            }
-
-            .logo {
-                font-size: 24px;
-            }
-
-            .content-box {
-                width: 90%;
-                margin-left: 5%;
-                margin-right: 5%;
+            .robot-container {
+                bottom: 10px;
             }
         }
-
-        /* Mobile Devices */
-        @media (max-width: 480px) {
-            body {
-                font-size: 14px;
-            }
-
-            header {
-                padding: 10px 20px;
-            }
-
-            .logo {
-                font-size: 22px;
-            }
-
-            nav {
-                flex-direction: column;
-                width: 100%;
-                text-align: left;
-            }
-
-            nav a {
-                font-size: 14px;
-                padding: 8px;
-            }
-
-            .content-box {
-                width: 100%;
-                margin: 10px;
-            }
-
-            footer {
-                font-size: 14px;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -211,23 +286,42 @@
     </nav>
 </header>
 
-<!-- Background Image -->
 <div class="background-image"></div>
+
+<!-- Robot Animation Container -->
+<div class="robot-container">
+    <div class="robot">
+        <div class="head">
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+        </div>
+        <div class="body"></div>
+        <div class="arm left"></div>
+        <div class="arm right"></div>
+        <div class="leg left"></div>
+        <div class="leg right"></div>
+        
+        <!-- Social Media Sign -->
+        <div class="social-sign" id="social-sign" onclick="window.open(currentSocialLink, '_blank')">
+            <img id="social-icon" src="facebook-icon.png" alt="Social Icon">
+        </div>
+    </div>
+</div>
 
 <!-- Content Sections -->
 <div id="about" class="content-box">
     <h2>About Us</h2>
-    <p>We are Bluetech, one of the leading computer technology companies in the Philippines since 2020. We started as a small computer shop in 2012, and with the advancement of technology, we decided to develop and improve our business, which is why Bluetech was born.</p>
+    <p>We are Bluetech, one of the leading computer technology companies in the Philippines since 2020.</p>
 </div>
 
 <div id="service" class="content-box">
     <h2>Service</h2>
-    <p>We offer a wide range of services including computer parts selling, computer repair, building computers, and software development.</p>
+    <p>We offer a wide range of services including Computer Parts selling, Computer Repair, and more.</p>
 </div>
 
 <div id="product" class="content-box">
     <h2>Product</h2>
-    <p>Our products range from hardware devices, components, software systems, and more. To explore more of our products, go to our shopping cart now.</p>
+    <p>Our products range from hardware devices, software systems, and more.</p>
 </div>
 
 <div id="contact" class="content-box">
@@ -241,19 +335,36 @@
 </footer>
 
 <script>
+    let socialIcons = ['facebook', 'youtube', 'twitter'];
+    let currentIconIndex = 0;
+    let currentSocialLink = "https://www.facebook.com";
+
+    // Change Social Icon every 10 seconds
+    setInterval(function() {
+        currentIconIndex = (currentIconIndex + 1) % socialIcons.length;
+        let icon = socialIcons[currentIconIndex];
+        
+        // Update the icon source and link
+        document.getElementById('social-icon').src = icon + "-icon.png";
+        if (icon === "facebook") {
+            currentSocialLink = "https://www.facebook.com";
+        } else if (icon === "youtube") {
+            currentSocialLink = "https://www.youtube.com";
+        } else if (icon === "twitter") {
+            currentSocialLink = "https://www.twitter.com";
+        }
+    }, 10000); // Change icon every 10 seconds
+
     // Function to toggle content visibility (open and close)
     function toggleContent(section) {
         const sectionElement = document.getElementById(section);
-        // If the section is currently visible, hide it; otherwise, show it
         if (sectionElement.style.display === 'block') {
             sectionElement.style.display = 'none';
         } else {
-            // Hide all sections first
             const sections = ['about', 'service', 'product', 'contact'];
             sections.forEach(function(sec) {
                 document.getElementById(sec).style.display = 'none';
             });
-            // Show the selected section
             sectionElement.style.display = 'block';
         }
     }
